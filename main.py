@@ -4,6 +4,7 @@ import requests
 import pickle
 import numpy as np
 import sklearn
+import datetime
 from sklearn.preprocessing import StandardScaler
 app = Flask(__name__)
 model = pickle.load(open('rfr.pkl','rb'))
@@ -29,6 +30,8 @@ def predict():
         else:
             Fuel_Type_Petrol=0
             Fuel_Type_Diesel=1
+        curr_time=datetime.datetime.now()
+        age=curr_time.year-Year
         Year=2020-Year
         Seller_Type_Individual=request.form['Seller_Type_Individual']
         if(Seller_Type_Individual=='Individual'):
